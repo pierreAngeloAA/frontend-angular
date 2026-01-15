@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title mb-4">Upload CSV</h3>
+
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            {{ success }}
+          </div>
+
+          <div class="mb-3">
+            <label for="csvFile" class="form-label">Select CSV File</label>
+            <input
+              type="file"
+              class="form-control"
+              id="csvFile"
+              accept=".csv"
+              (change)="onFileSelected($event)"
+              [disabled]="loading"
+            />
+            <div class="form-text">
+              Only CSV files are accepted
+            </div>
+          </div>
+
+          <div *ngIf="selectedFile" class="mb-3">
+            <div class="alert alert-info mb-0">
+              Selected file: <strong>{{ selectedFile.name }}</strong>
+              ({{ (selectedFile.size / 1024).toFixed(2) }} KB)
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="onUpload()"
+              [disabled]="!selectedFile || loading"
+            >
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+              {{ loading ? 'Uploading...' : 'Upload' }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="cancel()"
+              [disabled]="loading"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
