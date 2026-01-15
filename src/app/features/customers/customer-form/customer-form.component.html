@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title mb-4">
+            {{ isEditMode ? 'Edit Customer' : 'New Customer' }}
+          </h3>
+
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+
+          <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="full_name" class="form-label">Full Name *</label>
+              <input
+                type="text"
+                class="form-control"
+                id="full_name"
+                formControlName="full_name"
+                [class.is-invalid]="f['full_name'].invalid && f['full_name'].touched"
+              />
+              <div class="invalid-feedback" *ngIf="f['full_name'].invalid && f['full_name'].touched">
+                Full Name is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email *</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                [class.is-invalid]="f['email'].invalid && f['email'].touched"
+              />
+              <div class="invalid-feedback" *ngIf="f['email'].invalid && f['email'].touched">
+                <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                <div *ngIf="f['email'].errors?.['email']">Email must be valid</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phone"
+                formControlName="phone"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="document" class="form-label">Document *</label>
+              <input
+                type="number"
+                class="form-control"
+                id="document"
+                formControlName="document"
+              />
+            </div>
+
+            <div class="d-flex gap-2">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="loading || customerForm.invalid"
+              >
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                {{ loading ? 'Saving...' : (isEditMode ? 'Update' : 'Create') }}
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="cancel()"
+                [disabled]="loading"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

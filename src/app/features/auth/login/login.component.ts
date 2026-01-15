@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
   error = '';
-  returnUrl = '/login';
+  returnUrl = '/customers';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-
+  
+  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/customers';
   }
 
   get f() {
