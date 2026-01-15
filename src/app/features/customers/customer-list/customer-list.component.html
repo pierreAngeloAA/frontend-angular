@@ -2,13 +2,17 @@
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Customers</h2>
     <div>
-      <a routerLink="/customers/new" class="btn btn-primary mx-2">
+      <a routerLink="/customers/new" class="btn btn-primary">
         Add Customer
       </a>
-      <a routerLink="/imports/upload" class="btn btn-primary">
+      <a routerLink="/imports/upload" class="btn btn-primary m-3">
         Upload CSV
       </a>
+      <a routerLink="/logout" class="btn btn-danger">
+        Logout
+      </a>
     </div>
+
   </div>
 
   <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
