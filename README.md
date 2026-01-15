@@ -1,27 +1,40 @@
-# FrontendAngular
+# Angular Frontend - Customer Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+This project is the **frontend** of a customer management system, built with **Angular 16** and **Bootstrap 5**.  
+It includes authentication, CRUD for customers, and CSV data import.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Login and JWT-based authentication
+- Logout via route guard
+- Customer listing (Customers)
+- Create and edit customers
+- CSV import of customers (background processing with Sidekiq on the backend)
+- Row-level error handling for CSV import
 
-## Code scaffolding
+## Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 16 (Standalone Components)
+- Bootstrap 5
+- Reactive Forms
+- Angular Router
+- TypeScript
+- Backend: Rails API (JWT + Sidekiq)
+- Basic state management using observables
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository:
 
-## Running unit tests
+```bash
+git clone https://github.com/your-username/frontend-angular.git
+cd frontend-angular
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Install dependencies with Yarn:
 
-## Running end-to-end tests
+yarn install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+3 Run the application:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+yarn start
