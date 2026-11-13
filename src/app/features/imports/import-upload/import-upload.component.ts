@@ -4,11 +4,10 @@ import { Router, RouterModule } from '@angular/router';
 import { ImportService } from '../../../core/services/import.service';
 
 @Component({
-  selector: 'app-import-upload',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './import-upload.component.html',
-  styleUrls: ['./import-upload.component.css']
+    selector: 'app-import-upload',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './import-upload.component.html',
+    styleUrls: ['./import-upload.component.css']
 })
 export class ImportUploadComponent {
   loading = false;

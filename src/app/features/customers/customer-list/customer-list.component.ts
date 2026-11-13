@@ -5,11 +5,10 @@ import { CustomerService } from '../../../core/services/customer.service';
 import { Customer } from '../../../core/models/customer.model';
 
 @Component({
-  selector: 'app-customer-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.css']
+    selector: 'app-customer-list',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './customer-list.component.html',
+    styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
   customers: Customer[] = [];
