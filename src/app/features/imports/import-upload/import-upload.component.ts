@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router, RouterModule } from '@angular/router';
 import { ImportService } from '../../../core/services/import.service';
 
 @Component({
     selector: 'app-import-upload',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     templateUrl: './import-upload.component.html',
     styleUrls: ['./import-upload.component.css']
 })
