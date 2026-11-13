@@ -1,6 +1,7 @@
 # Angular Frontend - Customer Management
 
-This project is the **frontend** of a customer management system, built with **Angular 16** and **Bootstrap 5**.  
+This project is the **frontend** of a customer management system, built with **Angular 22** and **Bootstrap 5**.  
+Backend: [backend-api](https://github.com/pierreAngeloAA/backend-api) (Rails API with JWT and Sidekiq).  
 It includes authentication, CRUD for customers, and CSV data import.
 
 ## Features
@@ -14,7 +15,7 @@ It includes authentication, CRUD for customers, and CSV data import.
 
 ## Technologies
 
-- Angular 16 (Standalone Components)
+- Angular 22 (standalone components)
 - Bootstrap 5
 - Reactive Forms
 - Angular Router
@@ -22,19 +23,26 @@ It includes authentication, CRUD for customers, and CSV data import.
 - Backend: Rails API (JWT + Sidekiq)
 - Basic state management using observables
 
-## Installation
+## Getting started
 
-1. Clone the repository:
+Requirements: Node 22 and the [backend-api](https://github.com/pierreAngeloAA/backend-api) running on `http://localhost:3000` (its CORS config allows `http://localhost:4200`).
 
 ```bash
-git clone https://github.com/your-username/frontend-angular.git
+git clone https://github.com/pierreAngeloAA/frontend-angular.git
 cd frontend-angular
+npm ci
+npm start            # http://localhost:4200
+```
 
-2. Install dependencies with Yarn:
+Demo login from the backend seeds: `test@example.com` / `password123`.
 
-yarn install
+## Scripts
 
+| Command | What it does |
+|---|---|
+| `npm start` | Dev server on port 4200 |
+| `npm run build` | Production build in `dist/` |
+| `npm test` | Unit tests in watch mode (Karma + Jasmine) |
+| `npm run test:ci` | Unit tests once in Chrome headless, as CI runs them |
 
-3 Run the application:
-
-yarn start
+The API URL lives in `src/environments/environment.ts` (development) and `environment.prod.ts` (production).
