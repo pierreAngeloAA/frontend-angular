@@ -5,9 +5,11 @@
         <div class="card-body">
           <h3 class="card-title text-center mb-4">Login</h3>
 
-          <div *ngIf="error" class="alert alert-danger" role="alert">
-            {{ error }}
-          </div>
+          @if (error) {
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          }
 
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
@@ -18,11 +20,17 @@
                 id="email"
                 formControlName="email"
                 [class.is-invalid]="f['email'].invalid && f['email'].touched"
-              />
-              <div class="invalid-feedback" *ngIf="f['email'].invalid && f['email'].touched">
-                <div *ngIf="f['email'].errors?.['required']">Email is required</div>
-                <div *ngIf="f['email'].errors?.['email']">Email must be valid</div>
-              </div>
+                />
+              @if (f['email'].invalid && f['email'].touched) {
+                <div class="invalid-feedback">
+                  @if (f['email'].errors?.['required']) {
+                    <div>Email is required</div>
+                  }
+                  @if (f['email'].errors?.['email']) {
+                    <div>Email must be valid</div>
+                  }
+                </div>
+              }
             </div>
 
             <div class="mb-3">
@@ -33,18 +41,22 @@
                 id="password"
                 formControlName="password"
                 [class.is-invalid]="f['password'].invalid && f['password'].touched"
-              />
-              <div class="invalid-feedback" *ngIf="f['password'].invalid && f['password'].touched">
-                Password is required
-              </div>
+                />
+              @if (f['password'].invalid && f['password'].touched) {
+                <div class="invalid-feedback">
+                  Password is required
+                </div>
+              }
             </div>
 
             <button
               type="submit"
               class="btn btn-primary w-100"
               [disabled]="loading || loginForm.invalid"
-            >
-              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+              >
+              @if (loading) {
+                <span class="spinner-border spinner-border-sm me-2"></span>
+              }
               {{ loading ? 'Logging in...' : 'Login' }}
             </button>
           </form>

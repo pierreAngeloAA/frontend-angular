@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { CustomerService } from '../../../core/services/customer.service';
 import { Customer } from '../../../core/models/customer.model';
 
 @Component({
-  selector: 'app-customer-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.css']
+    selector: 'app-customer-form',
+    imports: [ReactiveFormsModule, RouterModule],
+    templateUrl: './customer-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {
   customerForm!: FormGroup;

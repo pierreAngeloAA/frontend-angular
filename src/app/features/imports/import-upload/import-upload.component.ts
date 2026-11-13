@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 import { Router, RouterModule } from '@angular/router';
 import { ImportService } from '../../../core/services/import.service';
 
 @Component({
-  selector: 'app-import-upload',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './import-upload.component.html',
-  styleUrls: ['./import-upload.component.css']
+    selector: 'app-import-upload',
+    imports: [RouterModule],
+    templateUrl: './import-upload.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrls: ['./import-upload.component.css']
 })
 export class ImportUploadComponent {
   loading = false;
