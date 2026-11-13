@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, finalize, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { LoginRequest, LoginResponse, User } from '../models/user.model';
@@ -31,22 +31,28 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${environment.apiUrl}/login`, credentials)
       .pipe(
         tap(response => {
-          console.log(response);
           this.storeAuthData(response.token, response.user);
           this.currentUserSubject.next(response.user);
         })
       );
   }
 
+  /**
+   * Revokes the token on the API and always clears the local session, even
+   * when the API rejects the call. With an expired token the DELETE answers
+   * 401, and the user must still end up logged out.
+   */
   logout(): void {
-    this.http.delete<void>(`${environment.apiUrl}/logout`).subscribe({
-      next: () => {
-        localStorage.removeItem(this.TOKEN_KEY);
-        localStorage.removeItem(this.USER_KEY);
-        this.currentUserSubject.next(null);
-        this.router.navigate(['/login']);
-      }
-    });
+    this.http.delete<void>(`${environment.apiUrl}/logout`)
+      .pipe(finalize(() => this.clearSession()))
+      .subscribe({ error: () => undefined });
+  }
+
+  private clearSession(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USER_KEY);
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
   getToken(): string | null {
