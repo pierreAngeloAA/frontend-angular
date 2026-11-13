@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
@@ -9,6 +9,7 @@ import { Customer } from '../../../core/models/customer.model';
     selector: 'app-customer-form',
     imports: [ReactiveFormsModule, RouterModule],
     templateUrl: './customer-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {

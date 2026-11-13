@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { AuthService } from '../../../core/services/auth.service';
     selector: 'app-login',
     imports: [ReactiveFormsModule],
     templateUrl: './login.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {

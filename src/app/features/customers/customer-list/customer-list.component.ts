@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Router, RouterModule } from '@angular/router';
 import { CustomerService } from '../../../core/services/customer.service';
@@ -8,6 +8,7 @@ import { Customer } from '../../../core/models/customer.model';
     selector: 'app-customer-list',
     imports: [RouterModule],
     templateUrl: './customer-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {

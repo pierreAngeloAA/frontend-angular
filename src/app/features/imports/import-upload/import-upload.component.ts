@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Router, RouterModule } from '@angular/router';
 import { ImportService } from '../../../core/services/import.service';
@@ -7,6 +7,7 @@ import { ImportService } from '../../../core/services/import.service';
     selector: 'app-import-upload',
     imports: [RouterModule],
     templateUrl: './import-upload.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./import-upload.component.css']
 })
 export class ImportUploadComponent {
